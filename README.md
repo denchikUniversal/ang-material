@@ -6,7 +6,7 @@ $npm install -g angular-cli.
 and angular2 material.
 $npm install --save @angular/material.
 
-Может выбить ошибку типа "undefined swal" из-за <script src="https://cdn.jsdelivr.net/sweetalert2/6.4.2/sweetalert2.min.js"></script>.
+Может выбить ошибку типа "undefined swal" из-за того, что может не сработать CDN sweetAlert.
 Нужно открыть index.html и сохранить проект еще раз.
 
 ## Development server
