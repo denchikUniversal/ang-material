@@ -1,0 +1,61 @@
+<md-toolbar color="primary">
+    <span>GameViewer</span>
+    <span class="spacer"></span>
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu #menu="mdMenu">
+      <button md-menu-item>
+        <md-icon>fingerprint</md-icon>
+        <span>List-item</span>
+      </button>
+      <button md-menu-item disabled>
+        <md-icon>announcement</md-icon>
+        <span>List-item</span>
+      </button>
+      <button md-menu-item>
+        <md-icon>notifications_off</md-icon>
+        <span>List-item</span>
+      </button>
+    </md-menu>
+</md-toolbar>
+
+<md-tab-group>
+  <md-tab label="Login"> 
+<form #myForm="ngForm" novalidate (ngSubmit)="onSubmit(myForm)" class="center">
+    <div class="form-group marg">
+        <label>Your name</label>
+        <input class="form-control" placeholder="Name" name="name" [(ngModel)]="name" required />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input placeholder="Email" class="form-control" name="email" [(ngModel)]="email" 
+            required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+    </div>
+    <div class="form-group">
+        <input type="submit" [disabled]="myForm.invalid" class="btn btn-default" value="Login" />
+    </div>
+</form>
+
+
+  </md-tab>
+  <md-tab label="Gallery">
+     <md-card *ngFor="let spaceScreen of spaceScreens; let i = index" class="marg">
+      <img md-card-image src="{{ spaceScreen.img }}">
+      <md-card-content>
+        <p>{{ spaceScreen.description }}</p>
+      </md-card-content>
+      <md-card-actions  class="center">
+        <button md-button (click)="likeMe(i)">
+            <i class="material-icons md-18" [class.red-color]="spaceScreen.liked == '1'">favorite</i> LIKE
+        </button>
+        <button md-button (click)="deleteMe(i)">
+            <i class="material-icons md-18">delete</i> DELETE 
+        </button>
+      </md-card-actions>
+    </md-card>
+  </md-tab>
+</md-tab-group>
+
+
+
